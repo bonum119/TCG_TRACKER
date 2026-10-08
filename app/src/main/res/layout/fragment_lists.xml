@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    android:orientation="vertical"
-    android:paddingBottom="56dp">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -73,6 +72,8 @@
         android:id="@+id/rvFolders"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="true"
+        android:paddingBottom="160dp"
         android:paddingHorizontal="16dp"
         tools:listitem="@layout/item_folder" />
 

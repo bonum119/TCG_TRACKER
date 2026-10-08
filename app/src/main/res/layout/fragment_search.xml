@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    android:orientation="vertical"
-    android:paddingBottom="56dp">
+    android:orientation="vertical">
 
     <!-- Search Input, Filter Button & Camera Scan Button Row -->
     <LinearLayout
@@ -117,6 +116,8 @@
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_weight="1"
+        android:clipToPadding="true"
+        android:paddingBottom="160dp"
         android:paddingHorizontal="16dp"
         android:layoutAnimation="@anim/layout_animation_slide"
         tools:listitem="@layout/item_card_search" />

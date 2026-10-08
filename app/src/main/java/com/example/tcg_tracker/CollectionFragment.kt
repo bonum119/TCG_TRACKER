@@ -63,10 +63,6 @@ class CollectionFragment : Fragment() {
             adapter = this@CollectionFragment.adapter
         }
 
-        binding.fabAdd.setOnClickListener {
-            findNavController().navigate(R.id.navigation_add_card)
-        }
-
         binding.btnSort.text = getString(R.string.sort_by, getString(currentSortMode.labelRes))
         binding.btnSort.setOnClickListener {
             val modes = SortMode.entries

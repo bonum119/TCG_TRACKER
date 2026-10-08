@@ -49,6 +49,10 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
         NavigationUI.setupWithNavController(binding.bottomNavigation, navController)
 
+        binding.fabAdd.setOnClickListener {
+            navController.navigate(R.id.navigation_add_card)
+        }
+
         navController.addOnDestinationChangedListener { _, destination, _ ->
             // Hide keyboard on menu change or navigation
             val imm = getSystemService(INPUT_METHOD_SERVICE) as android.view.inputmethod.InputMethodManager
@@ -58,10 +62,16 @@ class MainActivity : AppCompatActivity() {
             }
 
             when (destination.id) {
+                R.id.navigation_collection -> {
+                    binding.fabAdd.visibility = View.VISIBLE
+                    binding.bottomNavigation.visibility = View.VISIBLE
+                }
                 R.id.navigation_detail, R.id.navigation_add_card, R.id.navigation_expansion_detail, R.id.navigation_folder_detail -> {
+                    binding.fabAdd.visibility = View.GONE
                     binding.bottomNavigation.visibility = View.GONE
                 }
                 else -> {
+                    binding.fabAdd.visibility = View.GONE
                     binding.bottomNavigation.visibility = View.VISIBLE
                 }
             }
