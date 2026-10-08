@@ -11,6 +11,7 @@ data class PokemonCard(
     var isOwned: Boolean = false,
     var isWished: Boolean = false,
     var quantity: Int = 1,
+    var cardLanguage: String = "Inglés",
     val folderId: String? = null,
     var imageUri: String? = null,
     var priceUsd: Double? = null,

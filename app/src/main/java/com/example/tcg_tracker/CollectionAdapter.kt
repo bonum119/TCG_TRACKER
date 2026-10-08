@@ -1,6 +1,7 @@
 package com.example.tcg_tracker
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tcg_tracker.data.PokemonCard
@@ -12,6 +13,16 @@ class CollectionAdapter(
     private val onCardClick: (PokemonCard) -> Unit,
     private val onCardLongClick: (PokemonCard) -> Unit = {}
 ) : RecyclerView.Adapter<CollectionAdapter.CardViewHolder>() {
+
+    var isSelectionMode: Boolean = false
+        set(value) {
+            field = value
+            if (!value) selectedIds.clear()
+            notifyDataSetChanged()
+        }
+
+    val selectedIds = mutableSetOf<String>()
+    var onSelectionChanged: (Int) -> Unit = {}
 
     inner class CardViewHolder(val binding: ItemCardGridBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -36,10 +47,40 @@ class CollectionAdapter(
                 card.cardNumber
             )
             tvCondition.text = card.condition
-            root.setOnClickListener { onCardClick(card) }
+
+            if (isSelectionMode) {
+                cbSelected.visibility = View.VISIBLE
+                cbSelected.isChecked = selectedIds.contains(card.id)
+                cbSelected.setOnClickListener {
+                    if (selectedIds.contains(card.id)) selectedIds.remove(card.id)
+                    else selectedIds.add(card.id)
+                    onSelectionChanged(selectedIds.size)
+                }
+            } else {
+                cbSelected.visibility = View.GONE
+            }
+
+            root.setOnClickListener {
+                if (isSelectionMode) {
+                    if (selectedIds.contains(card.id)) selectedIds.remove(card.id)
+                    else selectedIds.add(card.id)
+                    notifyItemChanged(position)
+                    onSelectionChanged(selectedIds.size)
+                } else {
+                    onCardClick(card)
+                }
+            }
             root.setOnLongClickListener {
-                onCardLongClick(card)
-                true
+                if (!isSelectionMode) {
+                    isSelectionMode = true
+                    selectedIds.add(card.id)
+                    notifyDataSetChanged()
+                    onSelectionChanged(selectedIds.size)
+                    true
+                } else {
+                    onCardLongClick(card)
+                    true
+                }
             }
         }
     }

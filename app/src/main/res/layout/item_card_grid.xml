@@ -13,57 +13,73 @@
     app:strokeColor="@color/stroke_gray"
     app:strokeWidth="1dp">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="8dp">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/ivCardImage"
-            android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:adjustViewBounds="true"
-            android:contentDescription="@null"
-            android:scaleType="fitCenter"
-            android:src="@drawable/carta_vacia" />
-
-        <TextView
-            android:id="@+id/tvCardName"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textColor="@color/text_primary"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            tools:text="Charizard Holo" />
+            android:orientation="vertical"
+            android:padding="8dp">
 
-        <TextView
-            android:id="@+id/tvExpansion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textColor="@color/text_secondary"
-            android:textSize="12sp"
-            tools:text="Base Set · #4/102" />
+            <ImageView
+                android:id="@+id/ivCardImage"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:scaleType="fitCenter"
+                android:src="@drawable/carta_vacia" />
 
-        <TextView
-            android:id="@+id/tvCondition"
+            <TextView
+                android:id="@+id/tvCardName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="Charizard Holo" />
+
+            <TextView
+                android:id="@+id/tvExpansion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                tools:text="Base Set · #4/102" />
+
+            <TextView
+                android:id="@+id/tvCondition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/bg_condition_badge"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="2dp"
+                android:textColor="@color/gray_primary"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                tools:text="Near Mint" />
+
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/cbSelected"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_gravity="top|end"
+            android:layout_margin="4dp"
             android:background="@drawable/bg_condition_badge"
-            android:paddingHorizontal="6dp"
-            android:paddingVertical="2dp"
-            android:textColor="@color/gray_primary"
-            android:textSize="10sp"
-            android:textStyle="bold"
-            tools:text="Near Mint" />
+            android:visibility="gone"
+            tools:visibility="visible" />
 
-    </LinearLayout>
+    </FrameLayout>
 
 </com.google.android.material.card.MaterialCardView>

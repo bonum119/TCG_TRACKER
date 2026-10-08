@@ -62,6 +62,7 @@ object MockRepository {
                     put("isOwned", card.isOwned)
                     put("isWished", card.isWished)
                     put("quantity", card.quantity)
+                    put("cardLanguage", card.cardLanguage)
                     put("folderId", card.folderId ?: JSONObject.NULL)
                     put("imageUri", card.imageUri ?: JSONObject.NULL)
                     put("priceUsd", card.priceUsd ?: JSONObject.NULL)
@@ -116,6 +117,7 @@ object MockRepository {
                             isOwned = obj.optBoolean("isOwned", false),
                             isWished = obj.optBoolean("isWished", false),
                             quantity = obj.optInt("quantity", 1),
+                            cardLanguage = obj.optString("cardLanguage", "Inglés"),
                             folderId = if (obj.isNull("folderId")) null else obj.optString("folderId"),
                             imageUri = if (obj.isNull("imageUri")) null else obj.optString("imageUri"),
                             priceUsd = if (obj.isNull("priceUsd")) null else obj.optDouble("priceUsd"),
@@ -243,6 +245,12 @@ object MockRepository {
         saveToDisk()
     }
 
+    fun updateCardLanguage(id: String, language: String) {
+        val card = cards.find { it.id == id } ?: return
+        card.cardLanguage = language
+        saveToDisk()
+    }
+
     fun updateCardPrices(id: String, priceUsd: Double?, priceEur: Double?, storeUrl: String? = null) {
         val card = cards.find { it.id == id } ?: return
         priceUsd?.let { card.priceUsd = it }
@@ -352,6 +360,44 @@ object MockRepository {
         return ids.mapNotNull { id -> cards.find { it.id == id } }
     }
 
+    fun exportAlbumToJson(folderId: String): String? {
+        val folder = folders.find { it.id == folderId } ?: return null
+        val folderCards = getCardsInFolder(folderId)
+
+        val root = JSONObject()
+        val albumObj = JSONObject().apply {
+            put("id", folder.id)
+            put("title", folder.title)
+            put("cardCount", folderCards.size)
+            put("description", folder.description)
+        }
+        root.put("album", albumObj)
+
+        val cardsArray = JSONArray()
+        folderCards.forEach { card ->
+            cardsArray.put(JSONObject().apply {
+                put("id", card.id)
+                put("name", card.name)
+                put("expansion", card.expansion)
+                put("cardNumber", card.cardNumber)
+                put("rarity", card.rarity)
+                put("type", card.type)
+                put("condition", card.condition)
+                put("isOwned", card.isOwned)
+                put("isWished", card.isWished)
+                put("quantity", card.quantity)
+                put("cardLanguage", card.cardLanguage)
+                put("folderId", card.folderId ?: JSONObject.NULL)
+                put("imageUri", card.imageUri ?: JSONObject.NULL)
+                put("priceUsd", card.priceUsd ?: JSONObject.NULL)
+                put("priceEur", card.priceEur ?: JSONObject.NULL)
+                put("storeUrl", card.storeUrl ?: JSONObject.NULL)
+            })
+        }
+        root.put("cards", cardsArray)
+        return root.toString(2)
+    }
+
     fun exportToJson(): String {
         val root = JSONObject()
         val cardsArray = JSONArray()
@@ -367,6 +413,7 @@ object MockRepository {
                 put("isOwned", card.isOwned)
                 put("isWished", card.isWished)
                 put("quantity", card.quantity)
+                put("cardLanguage", card.cardLanguage)
                 put("folderId", card.folderId ?: JSONObject.NULL)
                 put("imageUri", card.imageUri ?: JSONObject.NULL)
                 put("priceUsd", card.priceUsd ?: JSONObject.NULL)
@@ -401,6 +448,51 @@ object MockRepository {
     fun importFromJson(jsonStr: String): Boolean {
         try {
             val root = JSONObject(jsonStr)
+
+            // 1. Single album export format
+            val albumObj = root.optJSONObject("album")
+            if (albumObj != null) {
+                val fId = albumObj.getString("id")
+                val title = albumObj.getString("title")
+                val desc = albumObj.optString("description", "")
+
+                if (folders.none { it.id == fId }) {
+                    folders.add(CardFolder(fId, title, 0, desc))
+                }
+
+                val cardsArray = root.optJSONArray("cards")
+                if (cardsArray != null) {
+                    val memberSet = folderMembers.getOrPut(fId) { mutableSetOf() }
+                    for (i in 0 until cardsArray.length()) {
+                        val obj = cardsArray.getJSONObject(i)
+                        val cardId = obj.getString("id")
+                        val card = PokemonCard(
+                            id = cardId,
+                            name = obj.getString("name"),
+                            expansion = obj.getString("expansion"),
+                            cardNumber = obj.optString("cardNumber", "N/A"),
+                            rarity = obj.optString("rarity", "Común"),
+                            type = obj.optString("type", "Incoloro"),
+                            condition = obj.optString("condition", "Near Mint"),
+                            isOwned = obj.optBoolean("isOwned", false),
+                            isWished = obj.optBoolean("isWished", false),
+                            quantity = obj.optInt("quantity", 1),
+                            cardLanguage = obj.optString("cardLanguage", "Inglés"),
+                            folderId = if (obj.isNull("folderId")) null else obj.optString("folderId"),
+                            imageUri = if (obj.isNull("imageUri")) null else obj.optString("imageUri"),
+                            priceUsd = if (obj.isNull("priceUsd")) null else obj.optDouble("priceUsd"),
+                            priceEur = if (obj.isNull("priceEur")) null else obj.optDouble("priceEur"),
+                            storeUrl = if (obj.isNull("storeUrl")) null else obj.optString("storeUrl")
+                        )
+                        upsertCard(card)
+                        memberSet.add(cardId)
+                    }
+                }
+                saveToDisk()
+                return true
+            }
+
+            // 2. Full backup format
             val cardsArray = root.optJSONArray("cards")
             if (cardsArray != null) {
                 for (i in 0 until cardsArray.length()) {
@@ -416,6 +508,7 @@ object MockRepository {
                         isOwned = obj.optBoolean("isOwned", false),
                         isWished = obj.optBoolean("isWished", false),
                         quantity = obj.optInt("quantity", 1),
+                        cardLanguage = obj.optString("cardLanguage", "Inglés"),
                         folderId = if (obj.isNull("folderId")) null else obj.optString("folderId"),
                         imageUri = if (obj.isNull("imageUri")) null else obj.optString("imageUri"),
                         priceUsd = if (obj.isNull("priceUsd")) null else obj.optDouble("priceUsd"),

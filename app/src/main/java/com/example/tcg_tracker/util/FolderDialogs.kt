@@ -17,9 +17,9 @@ object FolderDialogs {
 
         if (folders.isEmpty()) {
             MaterialAlertDialogBuilder(context)
-                .setTitle("Aún no tienes listas")
-                .setMessage("Crea una lista para guardar \"${card.name}\".")
-                .setPositiveButton("Crear lista") { _, _ ->
+                .setTitle("Aún no tienes ningún álbum")
+                .setMessage("Crea un álbum para guardar \"${card.name}\".")
+                .setPositiveButton("Crear álbum") { _, _ ->
                     promptNewList(context) { folder ->
                         MockRepository.addCardToFolder(folder.id, card.id)
                         Toast.makeText(context, "Añadida a \"${folder.title}\"", Toast.LENGTH_SHORT).show()
@@ -36,17 +36,17 @@ object FolderDialogs {
         val checked = initial.copyOf()
 
         MaterialAlertDialogBuilder(context)
-            .setTitle("Añadir \"${card.name}\" a listas")
+            .setTitle("Añadir \"${card.name}\" a álbum")
             .setMultiChoiceItems(names, checked) { _, which, isChecked -> checked[which] = isChecked }
             .setPositiveButton("Guardar") { _, _ ->
                 folders.forEachIndexed { i, folder ->
                     if (checked[i] && !initial[i]) MockRepository.addCardToFolder(folder.id, card.id)
                     if (!checked[i] && initial[i]) MockRepository.removeCardFromFolder(folder.id, card.id)
                 }
-                Toast.makeText(context, "Listas actualizadas", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Álbumes actualizados", Toast.LENGTH_SHORT).show()
                 onChanged()
             }
-            .setNeutralButton("Nueva lista") { _, _ ->
+            .setNeutralButton("Nuevo Álbum") { _, _ ->
                 promptNewList(context) { folder ->
                     MockRepository.addCardToFolder(folder.id, card.id)
                     Toast.makeText(context, "Añadida a \"${folder.title}\"", Toast.LENGTH_SHORT).show()
@@ -64,7 +64,7 @@ object FolderDialogs {
 
         if (cards.isEmpty()) {
             builder
-                .setMessage("Esta lista está vacía.\nMantén pulsada una carta (en Buscar o en Colección) para añadirla.")
+                .setMessage("Este álbum está vacío.\nMantén pulsada una carta (en Buscar o en Colección) para añadirla.")
                 .setPositiveButton("Cerrar", null)
                 .show()
             return

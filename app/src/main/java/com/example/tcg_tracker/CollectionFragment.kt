@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -58,16 +60,59 @@ class CollectionFragment : Fragment() {
             onCardLongClick = { card -> FolderDialogs.showAddToList(requireContext(), card) }
         )
 
+        adapter.onSelectionChanged = { count ->
+            if (count > 0) {
+                binding.layoutBatchActions.visibility = View.VISIBLE
+                binding.tvSelectedCount.text = getString(R.string.selected_count, count)
+            } else {
+                binding.layoutBatchActions.visibility = View.GONE
+            }
+        }
+
+        binding.btnCancelBatch.setOnClickListener {
+            adapter.isSelectionMode = false
+            binding.layoutBatchActions.visibility = View.GONE
+        }
+
+        binding.btnAddToAlbumBatch.setOnClickListener {
+            val folders = MockRepository.getFolders()
+            if (folders.isEmpty()) {
+                Toast.makeText(requireContext(), "Crea un álbum primero en la pestaña Álbumes", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            val names = folders.map { it.title }.toTypedArray()
+            AlertDialog.Builder(requireContext(), com.google.android.material.R.style.ThemeOverlay_Material3_MaterialAlertDialog)
+                .setTitle(getString(R.string.add_to_album))
+                .setItems(names) { _, which ->
+                    val targetFolder = folders[which]
+                    var addedCount = 0
+                    adapter.selectedIds.forEach { cardId ->
+                        if (MockRepository.addCardToFolder(targetFolder.id, cardId)) {
+                            addedCount++
+                        }
+                    }
+                    Toast.makeText(requireContext(), "$addedCount carta(s) añadidas a \"${targetFolder.title}\"", Toast.LENGTH_SHORT).show()
+                    adapter.isSelectionMode = false
+                    binding.layoutBatchActions.visibility = View.GONE
+                }
+                .setNegativeButton(getString(R.string.btn_cancel), null)
+                .show()
+        }
+
         binding.rvCollection.apply {
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = this@CollectionFragment.adapter
+        }
+
+        binding.btnAddCardTop.setOnClickListener {
+            findNavController().navigate(R.id.navigation_add_card)
         }
 
         binding.btnSort.text = getString(R.string.sort_by, getString(currentSortMode.labelRes))
         binding.btnSort.setOnClickListener {
             val modes = SortMode.entries
             val labels = modes.map { getString(it.labelRes) }.toTypedArray()
-            androidx.appcompat.app.AlertDialog.Builder(requireContext(), com.google.android.material.R.style.ThemeOverlay_Material3_MaterialAlertDialog)
+            AlertDialog.Builder(requireContext(), com.google.android.material.R.style.ThemeOverlay_Material3_MaterialAlertDialog)
                 .setTitle(getString(R.string.filter_dialog_title))
                 .setItems(labels) { _, which ->
                     currentSortMode = modes[which]
@@ -99,7 +144,7 @@ class CollectionFragment : Fragment() {
             } else {
                 binding.chipCondition.isChecked = false
                 val conditions = arrayOf(getString(R.string.all_conditions), "Mint", "Near Mint", "Played", "Damaged")
-                androidx.appcompat.app.AlertDialog.Builder(requireContext(), com.google.android.material.R.style.ThemeOverlay_Material3_MaterialAlertDialog)
+                AlertDialog.Builder(requireContext(), com.google.android.material.R.style.ThemeOverlay_Material3_MaterialAlertDialog)
                     .setTitle(getString(R.string.filter_condition))
                     .setItems(conditions) { _, which ->
                         if (which == 0) {
@@ -144,7 +189,7 @@ class CollectionFragment : Fragment() {
                     tvLabel.text = if (v[1] >= 500f) "${v[0].toInt()} €+" else "${v[0].toInt()} € - ${v[1].toInt()} €"
                 }
 
-                androidx.appcompat.app.AlertDialog.Builder(requireContext(), com.google.android.material.R.style.ThemeOverlay_Material3_MaterialAlertDialog)
+                AlertDialog.Builder(requireContext(), com.google.android.material.R.style.ThemeOverlay_Material3_MaterialAlertDialog)
                     .setTitle(getString(R.string.filter_price))
                     .setView(dialogView)
                     .setPositiveButton(getString(R.string.btn_apply_filters)) { _, _ ->

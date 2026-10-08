@@ -283,6 +283,48 @@
                 app:iconTint="@color/text_primary" />
         </LinearLayout>
 
+        <!-- Language Label -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Idioma de la carta:"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupLanguage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipLangEsp"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Español"
+                android:textColor="@color/text_primary" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipLangEng"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inglés"
+                android:textColor="@color/text_primary" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipLangJp"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Japonés"
+                android:textColor="@color/text_primary" />
+        </com.google.android.material.chip.ChipGroup>
+
         <!-- Save Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSave"

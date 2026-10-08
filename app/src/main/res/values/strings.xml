@@ -133,6 +133,8 @@
     <string name="top_market_title">Top Mercado (Cartas más valiosas)</string>
     <string name="btn_export">Exportar</string>
     <string name="btn_import">Importar</string>
+    <string name="btn_export_album">Exportar álbum</string>
+    <string name="btn_import_album">Importar álbum</string>
     <string name="searching_cards">Buscando cartas</string>
     <string name="comparing_web">Comparando con cartas de la web</string>
     <string name="analyzing_card">Analizando carta</string>
@@ -157,4 +159,6 @@
     <string name="settings_sound">Silenciar música</string>
     <string name="sound_muted">Música silenciada</string>
     <string name="sound_unmuted">Música activada</string>
+    <string name="selected_count">%d seleccionadas</string>
+    <string name="add_to_album">Añadir al álbum</string>
 </resources>

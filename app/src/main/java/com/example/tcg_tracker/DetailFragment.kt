@@ -102,7 +102,7 @@ class DetailFragment : Fragment() {
                 binding.pbPriceLoadingDetail.visibility = View.GONE
                 updatePriceUI(card.priceUsd, card.priceEur, card.storeUrl)
                 if (found) Snackbar.make(binding.root, R.string.prices_updated, Snackbar.LENGTH_SHORT).show()
-                else Snackbar.make(binding.root, "La web no publica precio para esta carta", Snackbar.LENGTH_LONG).show()
+                else Snackbar.make(binding.root, "No se ha encontrado precio para esta carta", Snackbar.LENGTH_LONG).show()
             }
         }
 
@@ -112,6 +112,13 @@ class DetailFragment : Fragment() {
             "played" -> binding.chipPlayed.isChecked = true
             "damaged" -> binding.chipDamaged.isChecked = true
             else -> binding.chipNearMint.isChecked = true
+        }
+
+        when (card.cardLanguage.lowercase(Locale.ROOT)) {
+            "español", "spanish" -> binding.chipLangEsp.isChecked = true
+            "inglés", "english" -> binding.chipLangEng.isChecked = true
+            "japonés", "japanese" -> binding.chipLangJp.isChecked = true
+            else -> binding.chipLangEng.isChecked = true
         }
 
         var currentQuantity = card.quantity
@@ -134,8 +141,13 @@ class DetailFragment : Fragment() {
             val selectedChip = binding.chipGroupCondition.findViewById<Chip>(selectedChipId)
             val newCondition = selectedChip?.text?.toString() ?: "Near Mint"
 
+            val selectedLangId = binding.chipGroupLanguage.checkedChipId
+            val selectedLangChip = binding.chipGroupLanguage.findViewById<Chip>(selectedLangId)
+            val newLang = selectedLangChip?.text?.toString() ?: "Inglés"
+
             MockRepository.updateCardCondition(card.id, newCondition)
             MockRepository.updateCardQuantity(card.id, currentQuantity)
+            MockRepository.updateCardLanguage(card.id, newLang)
 
             Snackbar.make(binding.root, R.string.changes_saved, Snackbar.LENGTH_SHORT).show()
         }
@@ -143,7 +155,7 @@ class DetailFragment : Fragment() {
         binding.btnDeleteCard.setOnClickListener {
             androidx.appcompat.app.AlertDialog.Builder(requireContext(), com.google.android.material.R.style.ThemeOverlay_Material3_MaterialAlertDialog)
                 .setTitle("¿Eliminar carta?")
-                .setMessage("¿Seguro que quieres borrar \"${card.name}\" de tu colección y listas?")
+                .setMessage("¿Seguro que quieres borrar \"${card.name}\" de tu colección y álbumes?")
                 .setPositiveButton("Eliminar") { _, _ ->
                     MockRepository.deleteCard(card.id)
                     Snackbar.make(binding.root, "Carta eliminada", Snackbar.LENGTH_SHORT).show()

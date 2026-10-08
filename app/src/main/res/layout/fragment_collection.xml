@@ -103,18 +103,40 @@
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnSort"
-                style="@style/Widget.Material3.Button.OutlinedButton"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                android:text="Ordenar por"
-                android:textColor="@color/text_primary"
-                android:textSize="12sp"
-                app:icon="@drawable/ic_filter"
-                app:iconTint="@color/text_primary"
-                app:strokeColor="@color/stroke_gray" />
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSort"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:text="Ordenar por"
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp"
+                    app:icon="@drawable/ic_filter"
+                    app:iconTint="@color/text_primary"
+                    app:strokeColor="@color/stroke_gray" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAddCardTop"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_add_card"
+                    android:textColor="#121212"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/gray_primary"
+                    app:cornerRadius="8dp"
+                    app:icon="@drawable/ic_add"
+                    app:iconTint="#121212" />
+            </LinearLayout>
 
             <com.google.android.material.chip.ChipGroup
                 android:layout_width="match_parent"
@@ -142,6 +164,59 @@
                     android:layout_height="wrap_content"
                     android:text="@string/filter_price" />
             </com.google.android.material.chip.ChipGroup>
+
+            <!-- Batch Selection Top Card (Visible when selecting cards) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/layoutBatchActions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/surface_dark"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:strokeColor="@color/stroke_gray"
+                app:strokeWidth="1dp"
+                tools:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:id="@+id/tvSelectedCount"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        tools:text="3 seleccionadas" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAddToAlbumBatch"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="@string/add_to_album"
+                        android:textColor="#121212"
+                        app:backgroundTint="@color/gray_primary" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnCancelBatch"
+                        style="@style/Widget.Material3.Button.TextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_cancel"
+                        android:textColor="@color/gray_primary" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
             <!-- Section Title -->
             <TextView

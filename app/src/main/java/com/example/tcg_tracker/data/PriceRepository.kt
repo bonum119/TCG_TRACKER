@@ -214,6 +214,21 @@ object PriceRepository {
 
     // ------------------------------------------------------------------ Precios
 
+    suspend fun fetchCardsForExpansion(
+        expansionName: String,
+        context: Context? = null
+    ): List<OnlineCardResult> {
+        val option = CardCatalog.collections.firstOrNull { it.label.equals(expansionName, true) }
+        val setName = option?.apiSetName ?: expansionName
+        val q = "set.name:\"$setName\""
+
+        return retryUntil(SEARCH_TIMEOUT_MS) { deadline ->
+            if (!isNetworkAvailable(context)) return@retryUntil null
+            val page = fetchPage(q, 250, requestTimeout(deadline))
+            page?.map(::withStoreUrl)?.takeIf { it.isNotEmpty() }
+        } ?: emptyList()
+    }
+
     /**
      * Precio real de una carta. Si se conoce el id de la API (p. ej. "base1-4") se pide esa carta exacta;
      * si no, se busca por nombre y se elige la que coincida en colección y número.
@@ -230,7 +245,19 @@ object PriceRepository {
         if (cardName.isBlank()) return noPrice
 
         val idQuery = cardId?.takeIf { Regex("^[a-z0-9]+-[A-Za-z0-9]+$").matches(it) }?.let { "id:$it" }
-        val nameQuery = nameClause(cardName)
+
+        val queryParts = mutableListOf<String>()
+        queryParts.add(nameClause(cardName))
+        if (!expansion.isNullOrBlank() && !expansion.equals("Desconocida", true)) {
+            val option = CardCatalog.collections.firstOrNull { it.label.equals(expansion, true) }
+            val setName = option?.apiSetName ?: expansion
+            queryParts.add("set.name:\"$setName\"")
+        }
+        if (!cardNumber.isNullOrBlank() && !cardNumber.equals("N/A", true)) {
+            val num = cardNumber.substringBefore('/').trim()
+            queryParts.add("number:$num")
+        }
+        val preciseQuery = queryParts.joinToString(" ")
 
         val result = retryUntil(PRICE_TIMEOUT_MS) { deadline ->
             if (!isNetworkAvailable(context)) return@retryUntil null
@@ -240,7 +267,9 @@ object PriceRepository {
                 page = fetchPage(idQuery, 1, requestTimeout(deadline))?.takeIf { it.isNotEmpty() }
             }
             if (page == null) {
-                page = fetchPage(nameQuery, 100, requestTimeout(deadline)) ?: return@retryUntil null
+                page = fetchPage(preciseQuery, 50, requestTimeout(deadline))?.takeIf { it.isNotEmpty() }
+                    ?: fetchPage(nameClause(cardName), 100, requestTimeout(deadline))
+                    ?: return@retryUntil null
             }
             if (page.isEmpty()) return@retryUntil noPrice
 
@@ -249,6 +278,8 @@ object PriceRepository {
             } ?: page.firstOrNull {
                 it.name.equals(cardName, true) && expansionMatches(it.expansion, expansion)
             } ?: page.firstOrNull { expansionMatches(it.expansion, expansion) && numberMatches(it.cardNumber, cardNumber) }
+            ?: page.firstOrNull { it.name.equals(cardName, true) }
+            ?: page.firstOrNull()
 
             if (exact == null) noPrice
             else PriceResult(exact.priceUsd, exact.priceEur, exact.storeUrl)

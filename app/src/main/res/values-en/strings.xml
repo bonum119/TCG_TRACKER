@@ -130,6 +130,8 @@
     <string name="top_market_title">Top Market (Most Valuable Cards)</string>
     <string name="btn_export">Export</string>
     <string name="btn_import">Import</string>
+    <string name="btn_export_album">Export album</string>
+    <string name="btn_import_album">Import album</string>
     <string name="searching_cards">Searching cards</string>
     <string name="comparing_web">Comparing with web cards</string>
     <string name="analyzing_card">Analyzing card</string>
@@ -154,4 +156,6 @@
     <string name="settings_sound">Mute music</string>
     <string name="sound_muted">Music muted</string>
     <string name="sound_unmuted">Music enabled</string>
+    <string name="selected_count">%d selected</string>
+    <string name="add_to_album">Add to album</string>
 </resources>
