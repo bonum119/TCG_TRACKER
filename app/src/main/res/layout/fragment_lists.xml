@@ -22,47 +22,50 @@
             android:textSize="22sp"
             android:textStyle="bold" />
 
-        <LinearLayout
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:orientation="horizontal">
+            android:scrollbars="none">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnExportAlbums"
-                style="@style/Widget.Material3.Button.OutlinedButton"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginEnd="6dp"
-                android:text="@string/btn_export"
-                android:textColor="@color/text_primary"
-                android:textSize="12sp"
-                app:strokeColor="@color/stroke_gray" />
+                android:orientation="horizontal">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnImportAlbums"
-                style="@style/Widget.Material3.Button.OutlinedButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginEnd="6dp"
-                android:text="@string/btn_import"
-                android:textColor="@color/text_primary"
-                android:textSize="12sp"
-                app:strokeColor="@color/stroke_gray" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnExportAlbums"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/btn_export"
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp"
+                    app:strokeColor="@color/stroke_gray" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnAddFolder"
-                style="@style/Widget.Material3.Button.OutlinedButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/add_folder"
-                android:textColor="@color/text_primary"
-                android:textSize="12sp"
-                app:strokeColor="@color/stroke_gray" />
-        </LinearLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnImportAlbums"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/btn_import"
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp"
+                    app:strokeColor="@color/stroke_gray" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAddFolder"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_folder"
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp"
+                    app:strokeColor="@color/stroke_gray" />
+            </LinearLayout>
+        </HorizontalScrollView>
 
     </LinearLayout>
 

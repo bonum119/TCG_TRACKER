@@ -32,13 +32,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvCardName"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:textColor="@color/text_primary"
                 android:textSize="15sp"
                 android:textStyle="bold"
@@ -46,17 +49,20 @@
 
             <TextView
                 android:id="@+id/tvExpansion"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:textColor="@color/text_secondary"
                 android:textSize="12sp"
                 tools:text="Base Set · #2/102" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
@@ -72,9 +78,12 @@
 
                 <TextView
                     android:id="@+id/tvPrices"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:textColor="@color/gray_primary"
                     android:textSize="11sp"
                     android:textStyle="bold"
@@ -84,7 +93,7 @@
                     android:id="@+id/tvTrendingBadge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="6dp"
                     android:background="@drawable/bg_condition_badge"
                     android:paddingHorizontal="6dp"
                     android:paddingVertical="2dp"
