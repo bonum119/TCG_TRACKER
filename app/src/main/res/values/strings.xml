@@ -1,0 +1,160 @@
+<resources>
+    <string name="app_name">TCG Tracker</string>
+    <string name="nav_collection">Colección</string>
+    <string name="nav_expansions">Sets</string>
+    <string name="nav_search">Buscador</string>
+    <string name="nav_wishlist">Deseadas</string>
+    <string name="nav_lists">Álbumes</string>
+
+    <!-- Wishlist Screen -->
+    <string name="title_wishlist">Lista de Deseos</string>
+    <string name="empty_wishlist">No tienes cartas en tu lista de deseos.\nAñade cartas desde el buscador o detalles.</string>
+    <string name="wishlist_summary_format">%1$d cartas deseadas · Valor estimado: %2$s</string>
+    <string name="btn_mark_owned">Conseguida</string>
+    <string name="btn_toggle_wish">Deseada</string>
+    <string name="added_to_wishlist">Añadida a Lista de Deseos</string>
+    <string name="removed_from_wishlist">Eliminada de Lista de Deseos</string>
+
+    <!-- Expansions Screen -->
+    <string name="title_expansions">Colecciones y Sets</string>
+    <string name="title_expansion_detail">Set: %s</string>
+    <string name="progress_format">%1$d de %2$d cartas (%3$d%%)</string>
+    <string name="tab_all_cards">Todas (%d)</string>
+    <string name="tab_owned_cards">Conseguidas (%d)</string>
+    <string name="tab_missing_cards">Faltantes (%d)</string>
+    <string name="status_owned">En colección</string>
+    <string name="status_missing">Te falta</string>
+    <string name="value_format">Valor actual: %s</string>
+
+    <!-- Collection Screen -->
+    <string name="title_collection">Mi Colección</string>
+    <string name="dashboard_title">Resumen de Inventario</string>
+    <string name="dashboard_total_cards">Cartas registradas</string>
+    <string name="empty_collection">Colección vacía. Pulsa + para añadir cartas.</string>
+    <string name="add_cards_hint">Pulsa + para registrar tu primera carta.</string>
+
+    <!-- Add Card Screen -->
+    <string name="title_add_card">Nueva Carta</string>
+    <string name="btn_take_photo">Hacer Foto</string>
+    <string name="btn_pick_gallery">Galería</string>
+    <string name="photo_hint">Fotografía o selecciona tu carta</string>
+    <string name="label_card_name">Nombre de la carta *</string>
+    <string name="label_expansion">Expansión / Set (ej: Base Set)</string>
+    <string name="label_card_number">Número (ej: 4/102)</string>
+    <string name="label_type">Tipo (ej: Fuego, Agua)</string>
+    <string name="label_rarity">Rareza (ej: Rara, Ultra Rare)</string>
+    <string name="btn_fetch_prices">Consultar Precios</string>
+    <string name="btn_save_card">Guardar en Colección</string>
+    <string name="error_name_required">Campo obligatorio</string>
+    <string name="prices_fetched_format">TCGPlayer: %1$s\nCardmarket: %2$s</string>
+    <string name="card_saved_success">Carta guardada con éxito</string>
+
+    <!-- Search Screen -->
+    <string name="title_search">Buscador TCG</string>
+    <string name="search_hint">Buscar carta o expansión...</string>
+    <string name="btn_scan_photo_search">Escanear carta</string>
+    <string name="btn_filter_desc">Filtrar</string>
+    <string name="filter_dialog_title">Filtros Avanzados</string>
+    <string name="filter_collection_label">Colección / Set</string>
+    <string name="filter_attribute_label">Atributo / Forma</string>
+    <string name="filter_rarity_label">Rareza</string>
+    <string name="filter_type_label">Tipo Elemental</string>
+    <string name="btn_apply_filters">Aplicar Filtros</string>
+    <string name="btn_clear_filters">Limpiar Filtros</string>
+    <string name="filter_all">Todas</string>
+    <string name="filter_todos">Todos</string>
+    <string name="filter_all_collections">Todas las colecciones</string>
+    <string name="filter_base_set">Base Set</string>
+    <string name="filter_evolving_skies">Evolving Skies</string>
+    <string name="filter_silver_tempest">Silver Tempest</string>
+    <string name="filter_brilliant_stars">Brilliant Stars</string>
+    <string name="filter_japanese">Ediciones JP</string>
+    <string name="filter_all_attributes">Todos los atributos</string>
+    <string name="filter_shiny">Shiny / Variocolor</string>
+    <string name="filter_regional">Forma Regional</string>
+    <string name="filter_vmax_vstar">VMAX / VSTAR</string>
+    <string name="added_to_collection">%s añadida</string>
+    <string name="removed_from_collection">%s eliminada</string>
+    <string name="no_search_results">Sin resultados.</string>
+
+    <!-- Detail Screen -->
+    <string name="title_detail">Detalles</string>
+    <string name="card_condition_label">Estado físico:</string>
+    <string name="condition_mint">Mint</string>
+    <string name="condition_near_mint">Near Mint</string>
+    <string name="condition_played">Played</string>
+    <string name="condition_damaged">Damaged</string>
+    <string name="save_changes">Guardar Cambios</string>
+    <string name="changes_saved">Cambios guardados</string>
+    <string name="market_prices_title">Mercado y Precios</string>
+    <string name="btn_refresh_prices">Actualizar Precios</string>
+    <string name="open_store">Ver Tienda Online</string>
+    <string name="prices_updated">Precios actualizados</string>
+
+    <!-- Lists Screen -->
+    <string name="title_lists">Álbumes</string>
+    <string name="add_folder">Crear Álbum</string>
+    <string name="dialog_create_folder_title">Crear Álbum</string>
+    <string name="folder_title_hint">Nombre</string>
+    <string name="folder_desc_hint">Descripción</string>
+    <string name="btn_create">Crear</string>
+    <string name="btn_cancel">Cancelar</string>
+    <string name="folder_created">Álbum creado</string>
+    <string name="card_count_format">%d cartas</string>
+
+    <!-- Common -->
+    <string name="card_expansion_format">%1$s · #%2$s</string>
+    <string name="search_prices_format">%1$s USD · %2$s</string>
+    <string name="rarity_label">Rareza: %s</string>
+    <string name="type_label">Tipo: %s</string>
+    <string name="trending_badge">Valor en alza</string>
+
+    <!-- Settings & Dialogs -->
+    <string name="settings_title">Configuración</string>
+    <string name="language_dialog_title">Seleccionar Idioma</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_english">English</string>
+    <string name="btn_close">Cerrar</string>
+    <string name="btn_delete">Eliminar</string>
+    <string name="dialog_delete_card_title">¿Eliminar carta?</string>
+    <string name="dialog_delete_card_msg">¿Seguro que quieres borrar esta carta de tu colección?</string>
+    <string name="dialog_delete_folder_title">¿Eliminar álbum?</string>
+    <string name="dialog_delete_folder_msg">¿Seguro que quieres borrar el álbum \"%s\"?</string>
+    <string name="card_deleted">Carta eliminada</string>
+    <string name="folder_deleted">Álbum eliminado</string>
+    <string name="error_open_camera">No se pudo abrir la cámara</string>
+    <string name="error_camera_permission">Se requiere permiso de cámara</string>
+    <string name="error_open_store">Error al abrir la tienda online</string>
+    <string name="no_price_published">La web no publica precio para esta carta</string>
+    <string name="import_success">Álbumes y cartas importados con éxito</string>
+    <string name="import_error">Error al importar el archivo</string>
+    <string name="export_chooser_title">Compartir álbumes y colección con un amigo</string>
+    <string name="no_collection_yet">No tienes cartas en tu colección todavía</string>
+    <string name="top_market_title">Top Mercado (Cartas más valiosas)</string>
+    <string name="btn_export">Exportar</string>
+    <string name="btn_import">Importar</string>
+    <string name="searching_cards">Buscando cartas</string>
+    <string name="comparing_web">Comparando con cartas de la web</string>
+    <string name="analyzing_card">Analizando carta</string>
+    <string name="search_taking_longer">La búsqueda está tardando más de lo habitual. Comprueba la ortografía o conexión.</string>
+    <string name="search_in_progress">Búsqueda en curso… Seguimos intentando encontrar la carta en el servidor.</string>
+    <string name="filter_duplicates">Repetidas</string>
+    <string name="copies_label">Copias en propiedad:</string>
+    <string name="filter_condition">Condición</string>
+    <string name="filter_price">Precio</string>
+    <string name="all_conditions">Todas las condiciones</string>
+    <string name="all_prices">Todos los precios</string>
+    <string name="price_more_10">Más de 10 €</string>
+    <string name="price_more_50">Más de 50 €</string>
+    <string name="price_more_100">Más de 100 €</string>
+    <string name="sort_by">Ordenar: %s</string>
+    <string name="sort_recent">Más recientemente añadida</string>
+    <string name="sort_oldest">Menos recientemente añadida</string>
+    <string name="sort_highest_price">De más cara a menos cara</string>
+    <string name="sort_lowest_price">De menos cara a más cara</string>
+    <string name="sort_oldest_set">De más antigua a menos antigua</string>
+    <string name="sort_newest_set">De menos antigua a más antigua</string>
+    <string name="settings_sound">Silenciar música</string>
+    <string name="sound_muted">Música silenciada</string>
+    <string name="sound_unmuted">Música activada</string>
+</resources>

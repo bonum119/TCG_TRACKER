@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_collection">
+
+    <fragment
+        android:id="@+id/navigation_collection"
+        android:name="com.example.tcg_tracker.CollectionFragment"
+        android:label="@string/title_collection"
+        tools:layout="@layout/fragment_collection" />
+
+    <fragment
+        android:id="@+id/navigation_expansions"
+        android:name="com.example.tcg_tracker.ExpansionsFragment"
+        android:label="@string/title_expansions"
+        tools:layout="@layout/fragment_expansions" />
+
+    <fragment
+        android:id="@+id/navigation_expansion_detail"
+        android:name="com.example.tcg_tracker.ExpansionDetailFragment"
+        android:label="@string/title_expansions"
+        tools:layout="@layout/fragment_expansion_detail">
+        <argument
+            android:name="expansionName"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="com.example.tcg_tracker.SearchFragment"
+        android:label="@string/title_search"
+        tools:layout="@layout/fragment_search" />
+
+    <fragment
+        android:id="@+id/navigation_wishlist"
+        android:name="com.example.tcg_tracker.WishlistFragment"
+        android:label="@string/title_wishlist"
+        tools:layout="@layout/fragment_wishlist" />
+
+    <fragment
+        android:id="@+id/navigation_lists"
+        android:name="com.example.tcg_tracker.ListsFragment"
+        android:label="@string/title_lists"
+        tools:layout="@layout/fragment_lists" />
+
+    <fragment
+        android:id="@+id/navigation_folder_detail"
+        android:name="com.example.tcg_tracker.FolderDetailFragment"
+        android:label="@string/title_lists"
+        tools:layout="@layout/fragment_folder_detail">
+        <argument
+            android:name="folderId"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_add_card"
+        android:name="com.example.tcg_tracker.AddCardFragment"
+        android:label="@string/title_add_card"
+        tools:layout="@layout/fragment_add_card" />
+
+    <fragment
+        android:id="@+id/navigation_detail"
+        android:name="com.example.tcg_tracker.DetailFragment"
+        android:label="@string/title_detail"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="cardId"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
+</navigation>

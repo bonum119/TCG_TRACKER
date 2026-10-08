@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Grayscale Dark Theme Background & Surfaces -->
+    <color name="bg_dark">#121212</color>
+    <color name="surface_dark">#1E1E1E</color>
+    <color name="surface_variant_dark">#2A2A2A</color>
+    <color name="stroke_gray">#3A3A3C</color>
+
+    <!-- Grayscale Accent Colors -->
+    <color name="gray_primary">#E0E0E0</color>
+    <color name="gray_secondary">#8E8E93</color>
+    <color name="gray_accent">#D0D0D0</color>
+    <color name="gray_button_bg">#3A3A3C</color>
+    <color name="pokemon_yellow">#E0E0E0</color> <!-- Fallback for layout references -->
+    <color name="pokemon_red">#8E8E93</color>
+    <color name="pokemon_blue">#A0A0A0</color>
+
+    <!-- Status Colors -->
+    <color name="green_accent">#4CAF50</color>
+    <color name="red_accent">#F44336</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary">#F2F2F7</color>
+    <color name="text_secondary">#8E8E93</color>
+</resources>

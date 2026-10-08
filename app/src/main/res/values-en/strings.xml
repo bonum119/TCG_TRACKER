@@ -1,0 +1,157 @@
+<resources>
+    <string name="app_name">TCG Tracker</string>
+    <string name="nav_collection">Collection</string>
+    <string name="nav_expansions">Sets</string>
+    <string name="nav_search">Search</string>
+    <string name="nav_wishlist">Wishlist</string>
+    <string name="nav_lists">Albums</string>
+
+    <!-- Wishlist Screen -->
+    <string name="title_wishlist">Wishlist</string>
+    <string name="empty_wishlist">Your wishlist is empty.\nAdd cards from search or card details.</string>
+    <string name="wishlist_summary_format">%1$d desired cards · Estimated value: %2$s</string>
+    <string name="btn_mark_owned">Owned</string>
+    <string name="btn_toggle_wish">Wished</string>
+    <string name="added_to_wishlist">Added to Wishlist</string>
+    <string name="removed_from_wishlist">Removed from Wishlist</string>
+
+    <!-- Expansions Screen -->
+    <string name="title_expansions">Collections &amp; Sets</string>
+    <string name="title_expansion_detail">Set: %s</string>
+    <string name="progress_format">%1$d of %2$d cards (%3$d%%)</string>
+    <string name="tab_all_cards">All (%d)</string>
+    <string name="tab_owned_cards">Owned (%d)</string>
+    <string name="tab_missing_cards">Missing (%d)</string>
+    <string name="status_owned">In collection</string>
+    <string name="status_missing">Missing</string>
+    <string name="value_format">Current value: %s</string>
+
+    <!-- Collection Screen -->
+    <string name="title_collection">My Collection</string>
+    <string name="dashboard_title">Inventory Summary</string>
+    <string name="dashboard_total_cards">Registered cards</string>
+    <string name="empty_collection">Collection is empty. Tap + to add cards.</string>
+    <string name="add_cards_hint">Tap + to register your first card.</string>
+
+    <!-- Add Card Screen -->
+    <string name="title_add_card">New Card</string>
+    <string name="btn_take_photo">Take Photo</string>
+    <string name="btn_pick_gallery">Gallery</string>
+    <string name="photo_hint">Photograph or select your card</string>
+    <string name="label_card_name">Card Name *</string>
+    <string name="label_expansion">Expansion / Set (e.g., Base Set)</string>
+    <string name="label_card_number">Number (e.g., 4/102)</string>
+    <string name="label_rarity">Rarity (e.g., Rare, Ultra Rare)</string>
+    <string name="btn_fetch_prices">Fetch Prices</string>
+    <string name="btn_save_card">Save to Collection</string>
+    <string name="error_name_required">Required field</string>
+    <string name="prices_fetched_format">TCGPlayer: %1$s\nCardmarket: %2$s</string>
+    <string name="card_saved_success">Card saved successfully</string>
+
+    <!-- Search Screen -->
+    <string name="title_search">TCG Search</string>
+    <string name="search_hint">Search card or expansion...</string>
+    <string name="btn_scan_photo_search">Scan card</string>
+    <string name="btn_filter_desc">Filter</string>
+    <string name="filter_dialog_title">Advanced Filters</string>
+    <string name="filter_collection_label">Collection / Set</string>
+    <string name="filter_attribute_label">Attribute / Form</string>
+    <string name="filter_rarity_label">Rarity</string>
+    <string name="btn_apply_filters">Apply Filters</string>
+    <string name="btn_clear_filters">Clear Filters</string>
+    <string name="filter_all">All</string>
+    <string name="filter_todos">All</string>
+    <string name="filter_all_collections">All collections</string>
+    <string name="filter_base_set">Base Set</string>
+    <string name="filter_evolving_skies">Evolving Skies</string>
+    <string name="filter_silver_tempest">Silver Tempest</string>
+    <string name="filter_brilliant_stars">Brilliant Stars</string>
+    <string name="filter_japanese">JP Editions</string>
+    <string name="filter_all_attributes">All attributes</string>
+    <string name="filter_shiny">Shiny</string>
+    <string name="filter_regional">Regional Form</string>
+    <string name="filter_vmax_vstar">VMAX / VSTAR</string>
+    <string name="added_to_collection">%s added</string>
+    <string name="removed_from_collection">%s removed</string>
+    <string name="no_search_results">No results.</string>
+
+    <!-- Detail Screen -->
+    <string name="title_detail">Details</string>
+    <string name="card_condition_label">Condition:</string>
+    <string name="condition_mint">Mint</string>
+    <string name="condition_near_mint">Near Mint</string>
+    <string name="condition_played">Played</string>
+    <string name="condition_damaged">Damaged</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="changes_saved">Changes saved</string>
+    <string name="market_prices_title">Market &amp; Prices</string>
+    <string name="btn_refresh_prices">Refresh Prices</string>
+    <string name="open_store">View Online Store</string>
+    <string name="prices_updated">Prices updated</string>
+
+    <!-- Lists Screen -->
+    <string name="title_lists">Albums</string>
+    <string name="add_folder">Create Album</string>
+    <string name="dialog_create_folder_title">Create Album</string>
+    <string name="folder_title_hint">Name</string>
+    <string name="folder_desc_hint">Description</string>
+    <string name="btn_create">Create</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="folder_created">Album created</string>
+    <string name="card_count_format">%d cards</string>
+
+    <!-- Common -->
+    <string name="card_expansion_format">%1$s · #%2$s</string>
+    <string name="search_prices_format">%1$s USD · %2$s</string>
+    <string name="rarity_label">Rarity: %s</string>
+    <string name="trending_badge">Rising Value</string>
+
+    <!-- Settings & Dialogs -->
+    <string name="settings_title">Settings</string>
+    <string name="language_dialog_title">Select Language</string>
+    <string name="language_spanish">Spanish</string>
+    <string name="language_english">English</string>
+    <string name="btn_close">Close</string>
+    <string name="btn_delete">Delete</string>
+    <string name="dialog_delete_card_title">Delete card?</string>
+    <string name="dialog_delete_card_msg">Are you sure you want to delete this card from your collection?</string>
+    <string name="dialog_delete_folder_title">Delete album?</string>
+    <string name="dialog_delete_folder_msg">Are you sure you want to delete the album \"%s\"?</string>
+    <string name="card_deleted">Card deleted</string>
+    <string name="folder_deleted">Album deleted</string>
+    <string name="error_open_camera">Could not open camera</string>
+    <string name="error_camera_permission">Camera permission required</string>
+    <string name="error_open_store">Error opening online store</string>
+    <string name="no_price_published">No price published for this card</string>
+    <string name="import_success">Albums and cards imported successfully</string>
+    <string name="import_error">Error importing file</string>
+    <string name="export_chooser_title">Share albums and collection with a friend</string>
+    <string name="no_collection_yet">You don\'t have any cards in your collection yet</string>
+    <string name="top_market_title">Top Market (Most Valuable Cards)</string>
+    <string name="btn_export">Export</string>
+    <string name="btn_import">Import</string>
+    <string name="searching_cards">Searching cards</string>
+    <string name="comparing_web">Comparing with web cards</string>
+    <string name="analyzing_card">Analyzing card</string>
+    <string name="search_taking_longer">Search is taking longer than usual. Check spelling or connection.</string>
+    <string name="search_in_progress">Search in progress… Still trying to find the card on the server.</string>
+    <string name="filter_duplicates">Duplicates</string>
+    <string name="copies_label">Owned copies:</string>
+    <string name="filter_condition">Condition</string>
+    <string name="filter_price">Price</string>
+    <string name="all_conditions">All conditions</string>
+    <string name="all_prices">All prices</string>
+    <string name="price_more_10">More than 10 €</string>
+    <string name="price_more_50">More than 50 €</string>
+    <string name="price_more_100">More than 100 €</string>
+    <string name="sort_by">Sort: %s</string>
+    <string name="sort_recent">Recently added</string>
+    <string name="sort_oldest">Oldest added</string>
+    <string name="sort_highest_price">Highest price first</string>
+    <string name="sort_lowest_price">Lowest price first</string>
+    <string name="sort_oldest_set">Oldest set first</string>
+    <string name="sort_newest_set">Newest set first</string>
+    <string name="settings_sound">Mute music</string>
+    <string name="sound_muted">Music muted</string>
+    <string name="sound_unmuted">Music enabled</string>
+</resources>
